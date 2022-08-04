@@ -1,5 +1,5 @@
 import AppLoading from 'expo-app-loading';
-import ShopNavigator from './navigation/ShopNavigator';
+import ShopNavigator from './navigation/shop/ShopNavigator';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
