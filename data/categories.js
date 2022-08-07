@@ -15,7 +15,7 @@ export const CATEGORIES = [{
 },
 {
     id: 4,
-    title: 'Otros Productos PAnaderia',
+    title: 'Otros Productos Panaderia',
     color: '#896978'
 }
 ]

@@ -1,21 +1,32 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from 'react-native'
 
-const BreadDetailScreen = ({ navigation }) => {
+import React from 'react'
+import { useSelector } from 'react-redux'
+
+export const BreadDetailScreen = () => {
+
+    const bread = useSelector(store => store.breads.selected)
+
     return (
         <View style={styles.screen}>
-            <Text>Bread Detail Screen</Text>
-            <Button title='Go to Category' onPress={() => { navigation.navigate('Bread', { title: "Parametros" }) }} />
-
+            <Text style={styles.title}>{bread.name}</Text>
+            <Text>{bread.description}</Text>
+            <Text>{bread.price}</Text>
+            <Text>{bread.weight}</Text>
         </View>
-    );
+    )
 }
 
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#fff',
+    },
+    title: {
+        fontSize: 20,
+        fontFamily: 'OpenSansBold',
+        marginBottom: 10
     }
 })
-
-export default BreadDetailScreen

@@ -1,29 +1,32 @@
-import { CATEGORIES } from '../data/categories'
-import { FlatList } from "react-native";
-import GridItem from '../components/GridItem';
+import { useDispatch, useSelector } from 'react-redux'
 
-const CategoriesScreen = ({ navigation }) => {
+import { FlatList } from 'react-native'
+import GridItem from '../components/GridItem'
+import React from 'react'
+import { selectCategory } from '../store/actions/category.action'
+
+export const CategoriesScreen = ({ navigation }) => {
+
+    const categories = useSelector(store => store.categories.categories)
+    const dispatch = useDispatch()
+
     const handleSelectedCategory = (item) => {
+        dispatch(selectCategory(item.id))
         navigation.navigate('Products', {
-            categoryID: item.id,
-            name: item.title,
-        })
-    };
+            name: item.title
+        });
+    }
+
     const renderGridItem = ({ item }) => (
         <GridItem item={item} onSelected={handleSelectedCategory} />
-    );
+    )
 
     return (
         <FlatList
-            data={CATEGORIES}
-            keyExtractor={item => item.id}
+            data={categories}
             renderItem={renderGridItem}
             numColumns={2}
+            keyExtractor={item => item.id}
         />
-
-    );
+    ); 
 }
-
-
-
-export default CategoriesScreen
