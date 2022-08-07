@@ -7,6 +7,10 @@ const CartScreen = () => {
     const handlerConfirmCart = () => console.log('Confirmar carrito');
     const handlerDeleteItem = () => console.log('Eliminar demasiado');
 
+    const renderItem = (data) => (
+        <CartItem item={data.item} onDelete={handlerDeleteItem} />
+    );
+
     return(
         <View stlye={stlyes.container}>
             <View style={stlyes.list}>
